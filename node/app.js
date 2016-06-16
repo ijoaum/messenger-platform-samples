@@ -215,11 +215,11 @@ function receivedMessage(event) {
         sendButtonMessage(senderID);
         break;
 
-      case 'generic':
-        sendGenericMessage(senderID);
+      case 'oi':
+        sendRegisterMessage(senderID);
         break;
 
-      case 'receipt':
+      case 'cadastro':
         sendReceiptMessage(senderID);
         break;
 
@@ -345,6 +345,54 @@ function sendButtonMessage(recipientId) {
             type: "postback",
             title: "Call Postback",
             payload: "Developer defined postback"
+          }]
+        }
+      }
+    }
+  };  
+
+  callSendAPI(messageData);
+}
+
+
+sendRegisterMessage(recipientId) {
+  var messageData = {
+    recipient: {
+      id: recipientId
+    },
+    message: {
+      attachment: {
+        type: "template",
+        payload: {
+          template_type: "generic",
+          elements: [{
+            title: "PicPay",
+            subtitle: "Hey, sou seu assistente PicPay. Abra sua conta e pague seus amigos.",
+            item_url: "https://www.oculus.com/en-us/rift/",               
+            image_url: "http://messengerdemo.parseapp.com/img/rift.png",
+            buttons: [{
+              type: "web_url",
+              url: "https://www.oculus.com/en-us/rift/",
+              title: "Quero criar uma conta"
+            }, {
+              type: "postback",
+              title: "Já tenho PicPay",
+              payload: "Payload for first bubble",
+            }],
+          }, {
+            title: "touch",
+            subtitle: "Your Hands, Now in VR",
+            item_url: "https://www.oculus.com/en-us/touch/",               
+            image_url: "http://messengerdemo.parseapp.com/img/touch.png",
+            buttons: [{
+              type: "web_url",
+              url: "https://www.oculus.com/en-us/touch/",
+              title: "Open Web URL"
+            }, {
+              type: "postback",
+              title: "Call Postback",
+              payload: "Payload for second bubble",
+            }]
           }]
         }
       }
