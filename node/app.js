@@ -377,7 +377,7 @@ sendRegisterMessage(recipientId) {
             }, {
               type: "postback",
               title: "Já tenho PicPay",
-              payload: "Payload for first bubble",
+              payload: "Payload for first bubble.",
             }],
           }, {
             title: "touch",
